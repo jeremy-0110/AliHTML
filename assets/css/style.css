@@ -26,7 +26,7 @@ body {
 .hero-banner {
     background-color: var(--hero-blue);
     /* 高度設定，依照比例大約是寬度的 1.2 倍 */
-    height: 436px; 
+    height: 520px; 
     border-radius: var(--border-radius-large);
     position: relative; /* 為了讓標題絕對定位 */
     margin-bottom: 5px; /* 與下方按鈕的距離 */
