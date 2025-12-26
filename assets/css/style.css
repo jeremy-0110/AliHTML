@@ -23,17 +23,17 @@ body {
 
 /* --- Hero 區域容器 --- */
 #hero-section {
-    padding: 15px; /* 整個區域與邊界的距離 */
+    padding: 5px; /* 整個區域與邊界的距離 */
 }
 
 /* --- 上方大藍色區塊 --- */
 .hero-banner {
     background-color: var(--hero-blue);
     /* 高度設定，依照比例大約是寬度的 1.2 倍 */
-    height: 480px; 
+    height: 436px; 
     border-radius: var(--border-radius-large);
     position: relative; /* 為了讓標題絕對定位 */
-    margin-bottom: 15px; /* 與下方按鈕的距離 */
+    margin-bottom: 5px; /* 與下方按鈕的距離 */
 }
 
 /* 標題 "標題" */
@@ -51,7 +51,7 @@ body {
 .hero-grid {
     display: flex;
     justify-content: space-between; /* 平均分配空間 */
-    gap: 12px; /* 按鈕之間的間距 */
+    gap: 5px; /* 按鈕之間的間距 */
 }
 
 /* 單個按鈕樣式 */
