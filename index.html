@@ -3,53 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>阿里山包車旅遊推薦 | 嘉義高鐵接送 | 專業導覽服務</title>
-    <meta name="description" content="提供專業阿里山包車、奮起湖一日遊、嘉義高鐵接送服務。在地司機，安全舒適，讓您輕鬆暢遊阿里山雲海與日出。">
-    <meta name="keywords" content="阿里山包車, 嘉義包車, 阿里山一日遊, 高鐵接送, 台灣旅遊">
-    <meta name="author" content="你的名字或車隊名稱">
-
-    <meta property="og:title" content="阿里山包車首選 | 帶您看見最美雲海">
-    <meta property="og:description" content="不用自己開車，輕鬆享受阿里山美景。提供多種車款選擇，立即預約！">
-    <meta property="og:image" content="https://你的網域/assets/images/og-image.jpg">
-    <meta property="og:url" content="https://你的網域">
-    <meta property="og:type" content="website">
-
-    <link rel="stylesheet" href="./assets/css/style.css">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+    <title>Oliver 阿里山包車旅遊</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header class="header">
-        <nav class="navbar">
-            <a href="#" class="logo">阿里山包車</a>
-            <ul class="nav-links">
-                <li><a href="#about">關於我們</a></li>
-                <li><a href="#services">熱門行程</a></li>
-                <li><a href="#cars">車款介紹</a></li>
-                <li><a href="#contact" class="btn-primary">立即預約</a></li>
-            </ul>
-        </nav>
+    <header id="sticky-navbar">
+        <div class="nav-container">
+            <div class="logo">Oliver Tour</div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+        <ul id="nav-menu">
+            <li><a href="#hero">Home 首頁</a></li>
+            <li><a href="#services">Ali 阿里山</a></li>
+            <li><a href="#services">Air 機場接送</a></li>
+            <li><a href="#services">Taiwan 台灣旅遊</a></li>
+            <li><a href="#about">About 關於我們</a></li>
+        </ul>
     </header>
 
-    <section class="hero">
+    <section id="hero">
         <div class="hero-content">
-            <h1>探索阿里山之美</h1>
-            <p>安全、舒適、在地的包車服務</p>
-            <a href="#contact" class="btn-cta">開始規劃行程</a>
+            <div class="hero-icon">Icon</div>
+            
+            <h1 class="hero-title">
+                帶家人，<br>
+                漫遊阿里山
+            </h1>
+        </div>
+        
+        <div class="service-grid">
+            <a href="#" class="service-box">
+                <div class="box-content">
+                    <i class="fa-solid fa-tree"></i> <span>阿里山</span>
+                </div>
+            </a>
+            <a href="#" class="service-box">
+                <div class="box-content">
+                    <i class="fa-solid fa-plane"></i>
+                    <span>機場</span>
+                </div>
+            </a>
+            <a href="#" class="service-box">
+                <div class="box-content">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    <span>台灣旅遊</span>
+                </div>
+            </a>
         </div>
     </section>
 
-    <main>
-        </main>
+    <section id="about">
+        <h2 class="section-title">相關介紹</h2>
+        
+        <div class="about-card">
+            <img src="https://placehold.co/600x400/png?text=Driver+Photo" alt="司機照片" class="about-bg-img">
+            
+            <div class="about-overlay">
+                <div class="about-text">
+                    <h3>Oliver 司機</h3>
+                    <p>在地經營 30 年，<br>把客人當朋友的貼心服務。<br>點擊了解更多...</p>
+                    <a href="#" class="btn-read-more">了解更多 &rarr;</a>
+                </div>
+                </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title text-right">聯絡資訊</h2>
+        
+        <div class="contact-grid">
+            <a href="#" class="contact-btn">
+                <i class="fa-brands fa-weixin"></i>
+                <span>WeChat</span>
+            </a>
+            <a href="#" class="contact-btn">
+                <i class="fa-brands fa-line"></i>
+                <span>LINE</span>
+            </a>
+            <a href="#" class="contact-btn">
+                <i class="fa-brands fa-facebook-f"></i>
+                <span>FB</span>
+            </a>
+        </div>
+
+        <a href="tel:+886912312312" class="phone-bar">
+            Phone: +886 0912312312
+        </a>
+    </section>
 
     <footer>
-        <p>&copy; 2024 阿里山包車服務 All Rights Reserved.</p>
+        <div class="footer-left">Icon</div>
+        <div class="footer-center">
+            Oliver Tour © 2025<br>
+            Content & Rights Reserved.
+        </div>
+        <div class="footer-right">
+            <a href="#">Line</a>
+            <a href="#">Phone</a>
+            <a href="#">Wechat</a>
+            <a href="#">Facebook</a>
+        </div>
     </footer>
 
-    <script src="./assets/js/main.js"></script>
+    <script>
+        // 1. 漢堡選單切換
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            menu.classList.toggle('active');
+        }
+
+        // 2. 滾動偵測 (Scroll Listener)
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('sticky-navbar');
+            const heroHeight = 550; // 設定滑動超過 550px 才出現
+
+            if (window.scrollY > heroHeight) {
+                navbar.classList.add('visible');
+            } else {
+                navbar.classList.remove('visible');
+            }
+        });
+    </script>
+
 </body>
 </html>

@@ -1,24 +1,33 @@
-/* --- CSS 變數設定 (方便之後統一換顏色) --- */
+/* --- 0. 設定全站變數 (依照你的色票 image_bd0e48.png) --- */
 :root {
-    --primary-color: #2c5e2e; /* 阿里山森林綠 */
-    --accent-color: #d4a017;  /* 日出金 */
-    --text-dark: #333333;
-    --text-light: #ffffff;
-    --bg-light: #f9f9f9;
-    --font-main: 'Noto Sans TC', sans-serif;
+    --bg-white: #FFFFFF;
+    --primary-blue: #A6F2FF;    /* Hero & Box 背景色 */
+    --text-black: #000000;
+    --text-grey: #656565;
+    --bg-grey-light: #D9D9D9;   /* 聯絡按鈕背景 */
+    --bg-grey-dark: #3D3D3D;    /* Footer 背景 */
+    --bg-silver: #CBCBCB;
+    
+    /* 你的日系風格微調 (漸層用) */
+    --gradient-start: rgba(255, 255, 255, 0.95); /* 左邊白色，稍微透一點點質感更好 */
+    --gradient-end: rgba(255, 255, 255, 0);      /* 右邊完全透明 */
 }
 
-/* --- 基礎重置 (Reset) --- */
+/* --- 基礎設定 --- */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* 讓 padding 不會撐大盒子，這很重要 */
+    box-sizing: border-box;
+    font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
 }
 
 body {
-    font-family: var(--font-main);
-    line-height: 1.6;
-    color: var(--text-dark);
+    background-color: var(--bg-white);
+    color: var(--text-black);
+    /* RWD 設定：手機優先，但在電腦上不會寬得離譜 */
+    max-width: 500px; /* 模擬手機 App 寬度 */
+    margin: 0 auto;   /* 置中 */
+    box-shadow: 0 0 20px rgba(0,0,0,0.1); /* 讓它在電腦上看像一支手機 */
 }
 
 a {
@@ -30,56 +39,243 @@ ul {
     list-style: none;
 }
 
-/* --- 簡單的排版範例 --- */
-.header {
-    background-color: var(--text-light);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    position: fixed; /* 固定在頂部 */
-    width: 100%;
+/* --- 1. 頂部滑動導航列 (Sticky Navbar) --- */
+#sticky-navbar {
+    position: fixed;
     top: 0;
-    z-index: 1000;
+    left: 0;
+    width: 100%;
+    max-width: 500px; /* 跟隨 body 寬度 */
+    height: 60px;
+    background-color: rgba(100, 100, 100, 0.9); /* 半透明深灰背景，依照 Figma */
+    color: white;
+    z-index: 999;
+    
+    /* 關鍵動畫：預設往上藏起來 (-100%) */
+    transform: translateY(-100%);
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* B. Slide Down 效果 */
 }
 
-.navbar {
-    display: flex; /* Flexbox 排版 */
+#sticky-navbar.visible {
+    transform: translateY(0); /* 滑下來 */
+}
+
+.nav-container {
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem 20px;
+    padding: 0 20px;
+    height: 100%;
 }
 
-.logo {
-    font-size: 1.5rem;
+.hamburger {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* 下拉選單樣式 */
+#nav-menu {
+    background-color: #555;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+#nav-menu.active {
+    max-height: 300px; /* 打開選單 */
+}
+
+#nav-menu li a {
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    border-bottom: 1px solid #666;
+}
+
+/* --- 2. Hero 區域 --- */
+#hero {
+    position: relative;
+    width: 100%;
+    /* 依照需求：藍色區域高度 550px */
+    /* 這裡設為 min-height 讓它包含下面的格子，若要嚴格 550px 可用 height */
+    background-color: var(--primary-blue);
+    padding-bottom: 40px; /* 給下面三個格子一點空間 */
+}
+
+.hero-content {
+    height: 400px; /* 留給上方大圖的空間 */
+    position: relative;
+    padding: 20px;
+}
+
+.hero-icon {
+    font-size: 18px;
+    color: white; /* 假設 Icon 是白色 */
+}
+
+.hero-title {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-size: 48px; /* 標題超大 */
     font-weight: bold;
-    color: var(--primary-color);
+    line-height: 1.2;
 }
 
-.nav-links {
+/* --- 3. 服務方塊 (Grid) --- */
+.service-grid {
     display: flex;
-    gap: 20px;
+    justify-content: space-between; /* 平均分配 */
+    padding: 0 15px;
+    gap: 10px;
+    margin-top: 10px;
 }
 
-.hero {
-    height: 100vh; /* 全螢幕高度 */
-    background-color: #ddd; /* 之後這裡換成背景圖 */
+.service-box {
+    flex: 1; /* 三個等寬 */
+    background-color: var(--primary-blue); /* 跟 Hero 同色，或稍微變深 */
+    border: 2px solid white; /* 加個白框區隔 */
+    border-radius: 15px; /* 圓角 */
+    aspect-ratio: 1 / 1; /* 正方形 */
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin-top: 60px; /* 避開 fixed header */
+    /* 陰影增加點擊感 */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-.btn-cta {
+.box-content i {
+    display: block;
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+/* --- 4. 相關介紹 (漸層卡片) --- */
+#about {
+    padding: 40px 20px;
+}
+
+.section-title {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.about-card {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    background-color: #333; /* 預設底色 */
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.about-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 讓照片填滿不變形 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.about-overlay {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    /* 漸層魔法：左邊白色(放字) -> 右邊透明(看圖) */
+    background: linear-gradient(to right, var(--gradient-start) 40%, var(--gradient-end) 100%);
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.about-text {
+    max-width: 60%; /* 文字只佔左邊 60% */
+}
+
+.btn-read-more {
     display: inline-block;
-    background-color: var(--primary-color);
-    color: var(--text-light);
-    padding: 10px 25px;
-    border-radius: 5px;
-    margin-top: 20px;
-    transition: background 0.3s;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666;
+    font-weight: bold;
 }
 
-.btn-cta:hover {
-    background-color: #1e4220;
+/* --- 5. 聯絡資訊 --- */
+#contact {
+    padding: 20px;
+}
+
+.text-right {
+    text-align: right; /* 標題靠右，依照 Figma */
+}
+
+.contact-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.contact-btn {
+    flex: 1;
+    background-color: var(--bg-grey-light);
+    height: 100px; /* 大按鈕 */
+    border: 3px solid var(--bg-grey-dark); /* 深灰框 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-black);
+    font-weight: bold;
+}
+
+.contact-btn i {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+/* 為了區分，給不同按鈕一點品牌色 (選用) */
+.contact-btn:nth-child(2) i { color: #06C755; } /* LINE 綠 */
+.contact-btn:nth-child(3) i { color: #1877F2; } /* FB 藍 */
+
+.phone-bar {
+    display: block;
+    width: 100%;
+    background-color: var(--bg-grey-dark);
+    color: white;
+    text-align: center; /* 依照 Figma 靠左或置中 */
+    padding: 15px;
+    font-size: 18px;
+}
+
+/* --- 6. Footer --- */
+footer {
+    background-color: var(--bg-grey-dark); /* 依照 Figma 灰色 */
+    color: white; /* 依照 Figma 文字灰色或白 */
+    padding: 30px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 12px;
+}
+
+.footer-center {
+    flex: 1;
+    padding: 0 20px;
+    color: #CCC;
+}
+
+.footer-right {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+.footer-right a {
+    color: #CCC;
+    margin-bottom: 5px;
 }
