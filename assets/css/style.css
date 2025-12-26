@@ -15,10 +15,6 @@
 
 body {
     background-color: #FFFFFF; /* 背景白 */
-    /* 模擬手機寬度，置中顯示，方便在電腦上預覽 */
-    max-width: 420px; 
-    margin: 20px auto; 
-    border: 1px solid #eee; /* 加個細框方便看邊界，上線可拿掉 */
 }
 
 /* --- Hero 區域容器 --- */
