@@ -1,51 +1,75 @@
-/* --- Oliver Tour Style --- */
+/* --- 0. 全站基礎設定 (Reset) --- */
 :root {
-    --bg-white: #FFFFFF;
-    --primary-blue: #A6F2FF;
+    --hero-blue: #A6F2FF; /* 設計稿的藍色 */
     --text-black: #000000;
-    --bg-grey-light: #D9D9D9;
-    --bg-grey-dark: #3D3D3D;
-    --gradient-start: rgba(255, 255, 255, 0.95);
-    --gradient-end: rgba(255, 255, 255, 0);
+    --border-radius-large: 30px; /* 大圓角 */
+    --border-radius-medium: 25px; /* 中圓角 */
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: "Noto Sans TC", sans-serif; }
-body { background-color: var(--bg-white); max-width: 500px; margin: 0 auto; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
-a { text-decoration: none; color: inherit; }
-ul { list-style: none; }
-
-/* Sticky Navbar */
-#sticky-navbar {
-    position: fixed; top: 0; left: 0; width: 100%; max-width: 500px; height: 60px;
-    background-color: rgba(60, 60, 60, 0.9); color: white; z-index: 999;
-    display: flex; justify-content: space-between; align-items: center; padding: 0 20px;
-    /* 預設顯示，方便你測試 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans TC', sans-serif; /* 使用思源黑體 */
 }
-.nav-container { display: flex; justify-content: space-between; width: 100%; align-items: center; }
-.hamburger { font-size: 24px; cursor: pointer; color: white; }
 
-/* Hero Section */
-#hero { background-color: var(--primary-blue); padding-bottom: 40px; position: relative; }
-.hero-content { height: 400px; padding: 20px; position: relative; }
-.hero-title { font-size: 48px; font-weight: bold; position: absolute; bottom: 20px; left: 20px; line-height: 1.2; }
-.hero-icon { color: white; font-size: 18px; }
+body {
+    background-color: #FFFFFF; /* 背景白 */
+    /* 模擬手機寬度，置中顯示，方便在電腦上預覽 */
+    max-width: 420px; 
+    margin: 20px auto; 
+    border: 1px solid #eee; /* 加個細框方便看邊界，上線可拿掉 */
+}
 
-/* Service Grid */
-.service-grid { display: flex; gap: 10px; padding: 0 15px; margin-top: 10px; }
-.service-box { flex: 1; background-color: var(--primary-blue); border: 2px solid white; border-radius: 15px; aspect-ratio: 1/1; display: flex; justify-content: center; align-items: center; text-align: center; font-weight: bold; }
+/* --- Hero 區域容器 --- */
+#hero-section {
+    padding: 15px; /* 整個區域與邊界的距離 */
+}
 
-/* About Section */
-#about { padding: 40px 20px; }
-.about-card { position: relative; height: 250px; background: #333; border-radius: 4px; overflow: hidden; }
-.about-bg-img { width: 100%; height: 100%; object-fit: cover; position: absolute; }
-.about-overlay { position: relative; z-index: 1; width: 100%; height: 100%; background: linear-gradient(to right, var(--gradient-start) 45%, var(--gradient-end) 100%); display: flex; align-items: center; padding-left: 20px; }
-.about-text { max-width: 65%; }
+/* --- 上方大藍色區塊 --- */
+.hero-banner {
+    background-color: var(--hero-blue);
+    /* 高度設定，依照比例大約是寬度的 1.2 倍 */
+    height: 480px; 
+    border-radius: var(--border-radius-large);
+    position: relative; /* 為了讓標題絕對定位 */
+    margin-bottom: 15px; /* 與下方按鈕的距離 */
+}
 
-/* Contact */
-#contact { padding: 20px; }
-.contact-grid { display: flex; gap: 10px; margin-bottom: 10px; }
-.contact-btn { flex: 1; background: var(--bg-grey-light); height: 100px; border: 3px solid var(--bg-grey-dark); display: flex; flex-direction: column; justify-content: center; align-items: center; font-weight: bold; }
-.phone-bar { display: block; background: var(--bg-grey-dark); color: white; text-align: center; padding: 15px; }
+/* 標題 "標題" */
+.hero-title {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    font-size: 80px; /* 超大字體 */
+    font-weight: 700; /* 粗體 */
+    color: var(--text-black);
+    line-height: 1.1; /* 行高，讓兩字緊湊一點 */
+}
 
-/* Footer */
-footer { background: var(--bg-grey-dark); color: #CCC; padding: 30px 20px; display: flex; justify-content: space-between; font-size: 12px; }
+/* --- 下方三個小按鈕區塊 (Grid) --- */
+.hero-grid {
+    display: flex;
+    justify-content: space-between; /* 平均分配空間 */
+    gap: 12px; /* 按鈕之間的間距 */
+}
+
+/* 單個按鈕樣式 */
+.hero-btn {
+    flex: 1; /* 三個按鈕等寬 */
+    background-color: var(--hero-blue);
+    border-radius: var(--border-radius-medium);
+    /* 讓高度等於寬度，變成正方形 (aspect-ratio 是新語法) */
+    aspect-ratio: 1 / 1; 
+    
+    /* 文字置中 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* 文字樣式 */
+    text-decoration: none; /* 去除超連結底線 */
+    color: var(--text-black);
+    font-size: 20px;
+    font-weight: 400; /* 標準粗細 */
+}
